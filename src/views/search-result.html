@@ -1,0 +1,41 @@
+﻿<section class="search-results-container">
+    <div class="container-fluid nopadding search-section-container">
+        <div class="container">
+            <div class="row nomargin justify-content-center">
+                <div class="col-12">
+                    <search-content [autoCompleteSearchTerm]="autoCompleteSearchText"
+                                    [autoCompleteSearchID]="autoCompleteSearchID"
+                                    [nameSearchTerm]="searchQuery">
+                    </search-content>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="search-results container">
+        <div class="row">
+            <div class="col-6" *ngFor="let searchResult of searchResultList">
+                <div class="search-result">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="{{searchResult.restaurant.featured_image}}" class="col-12 img-responsive nopadding" height="100" title="image" />
+                            </div>
+                            <div class="col-7">
+                                <h3>{{searchResult.restaurant.name}}</h3>
+                                <h5>{{searchResult.restaurant.location.address}}</h5>
+                                <!--<a target="_blank" href="{{searchResult.restaurant.url}}">{{searchResult.restaurant.url}}</a>-->
+                            </div>
+                        </div>
+                        
+                        <p>cuisines : <span>{{searchResult.restaurant.cuisines}}</span></p>
+                        <p>Average cost for two : <span>{{searchResult.restaurant.average_cost_for_two}}</span></p>
+                        <p>Rating: <span>{{searchResult.restaurant.user_rating.aggregate_rating}} / {{searchResult.restaurant.user_rating.rating_text}}</span></p>
+                        <p>Online Delivery : <span>{{searchResult.restaurant.has_online_delivery == '1' ? 'Yes' : 'No'}}</span></p>
+                        <p>Online Booking : <span>{{searchResult.restaurant.has_table_booking == '1' ? 'Yes' : 'No'}}</span></p>
+                        <button type="button" class="btn btn-success pull-right" (click)="getDetails(searchResult.restaurant.id)">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,30 @@
+﻿<form class="search-form">
+    <div class="row">
+        <div class="col-4 nopadding">
+            <label class="sr-only" for="location">Select Your City</label>
+            <input class="form-control col-12"
+                   [(ngModel)]="autoCompleteSearchTerm"
+                   [typeahead]="dataSource"
+                   [typeaheadOptionField]="'name'"
+                   [typeaheadMinLength]="1"
+                   (typeaheadOnSelect)="typeaheadOnSelect($event)"
+                   name="searchByLocation"
+                   placeholder="Search your location"
+                   autocomplete="off"
+            />
+            <div *ngIf="typeaheadLoading===true">
+                <i class="glyphicon glyphicon-refresh ng-hide" style=""></i>
+            </div>
+            <div *ngIf="typeaheadNoResults===true" class="" style="">
+                <i class="glyphicon glyphicon-remove"></i> No Results Found
+            </div>
+        </div>
+        <div class="col-6 nopadding">
+            <label class="sr-only" for="searchByName">Search By Name</label>
+            <input type="text" class="form-control col-12" id="searchByName" placeholder="Search By Name" autocomplete="off" [(ngModel)]="nameSearchTerm" name="searchByName"/>            
+        </div>
+        <div class="col-2 text-right nopadding">
+            <button type="button" class="btn btn-secondary" (click)="getSearchResults()">Search</button>
+        </div>
+    </div>
+</form>

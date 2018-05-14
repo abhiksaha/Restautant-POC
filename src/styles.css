@@ -1,0 +1,47 @@
+.ajax-loader-bg{
+    background:rgba(0,0,0,0.4);
+    position:absolute;
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:100;
+}
+.ajax-loader {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+    z-index: 101;
+}
+.nopadding{
+    padding:0!important;
+}
+.nomargin{
+    margin:0!important;
+}
+input, select, textarea{
+    outline:none;
+}
+.search-form .dropdown,
+.search-form .dropdown-menu{
+    width:100%;
+}
+.search-form .dropdown-menu {
+    padding:10px;
+    max-height:200px;
+    overflow-y:auto;
+}
+.search-form .dropdown-menu li a{
+    color:#000;
+}
+.dropdown.open .dropdown-menu{
+    display:block;
+}
+.search-section-container{
+    background:#000;
+    margin-bottom:20px;
+}

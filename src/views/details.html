@@ -1,0 +1,60 @@
+﻿<section class="details-section">
+    <div class="container-fluid nopadding search-section-container">
+        <div class="container">
+            <div class="row nomargin justify-content-center">
+                <div class="col-12">
+                    <search-content [autoCompleteSearchTerm]="autoCompleteSearchText"
+                                    [autoCompleteSearchID]="autoCompleteSearchID"
+                                    [nameSearchTerm]="searchQuery">
+                    </search-content>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="details container">
+        <div class="row" *ngIf="restaurantDetails">
+            <div class="col-12">
+                <img src="{{restaurantDetails.featured_image}}" class="col-12 nopadding" height="300" alt="Featured Image" />
+            </div>
+            <div class="col-12">
+                <div class="overlap-content">
+                    <h2>{{restaurantDetails.name}}</h2>
+                    <h5>{{restaurantDetails.location.address}}</h5>
+                    <h6>Locatity: {{restaurantDetails.location.locality_verbose}}</h6>
+                </div>
+            </div>
+            <div class="col-12">
+                <p>Cuisines: {{restaurantDetails.cuisines}}</p>
+                <p>Cost For Two: {{restaurantDetails.average_cost_for_two}} INR</p>
+                <p>Find Menu: <a href="{{restaurantDetails.menu_url}}">{{restaurantDetails.menu_url}}</a></p>
+            </div>
+        </div>
+        <div class="row" *ngIf="reviews">
+            <div class="col-12">
+                <h5>Reviews ({{reviews.reviews_shown}} / {{reviews.reviews_count}})</h5>
+                <div class="row">
+                    <div class="col-6 review" *ngFor="let review of reviews.user_reviews">
+                        <div class="review-details">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="{{review.review.user.profile_image}}" alt="Profile Image" class="col-12 nopadding"/>
+                                </div>
+                                <div class="col-9">
+                                    <h3>{{review.review.user.name}}</h3>
+                                    <h5>{{review.review.user.foodie_level}}</h5>
+                                    <h6>{{review.review.rating}} | {{review.review.rating_text}}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div>{{review.review.review_text}}</div>
+                                    <span>{{review.review.review_time_friendly}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
